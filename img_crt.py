@@ -46,14 +46,20 @@ def img_crt(type_img, text):
             line = lines[i]
             need_len = cur_size // 3
             if need_len >= len(line):
+                # без переноса. всё вмещается
+
                 new_line = line + '\n'
             else:
                 num_lines += 1
                 if (len(line) - need_len) <= 5:
+                    # перенос времени
+
                     new_line = line[:-5].strip() + '\n' + line[-5:].strip() + '\n'
                 else:
+                    # некрасивый пока что перенос по символам в строчке
+
                     new_line = line[:-len(line) + need_len].strip() + '\n' + line[-(
-                            len(line) - need_len) + 2:].strip() + '\n'
+                            len(line) - need_len):].strip() + '\n'
                 if i == len(lines) - 1:
                     new_line = new_line[:-1]
             lines[i] = new_line
@@ -94,7 +100,7 @@ def img_crt(type_img, text):
     main_img.save('img/res_month_img.png')
 
 
-img_crt('month', 'первое 10:00/дз/обнять алину 13:00/мрмяу 13:45')
+img_crt('month', 'первое 10:00/дз/обнять алиночку 13:00/мрмяу 13:45')
 
 # print(list_tasks('first 12:00/sec 10:00'))
 
